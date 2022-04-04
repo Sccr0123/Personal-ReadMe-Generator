@@ -16,48 +16,44 @@ function generateMarkdown(data) {
 
 	//Table of Contents
 	if (data.tableofcontents[0] === "Yes") {
-    data.tableofcontents.final = `
-    ## Table of Contents
+		data.tableofcontents.final = `## Table of Contents
 
-      [Installation](#installation)
-      [Usage](#usage)
-      [License](#credits)
-      [Contributing](#contributing)
-      [Tests](#tests)
-      [Questions](#questions)
-    `;
+  [Installation](#installation)
+  [Usage](#usage)
+  [License](#credits)
+  [Contributing](#contributing)
+  [Tests](#tests)
+  [Questions](#questions)`;
 	} else {
 		data.tableofcontents.final = "";
-  }
+	}
 
 	//Screenshot
 	if (data.screenshot.answer[0] === "Yes") {
-    data.usage.final = `## Usage
+		data.usage.final = `## Usage
 
-    ${data.usage.text}
-    ${data.screenshot.path}`;
+  ${data.usage.text}
+  ${data.screenshot.path}`;
 	} else {
-    data.usage.final = `## Usage
+		data.usage.final = `## Usage
 
     ${data.usage.text}`;
 	}
 
 	//Credits
 	if (data.collaborators.answer[0] === "Yes") {
-    data.collaborators.final = `## Credits
-    
-    ${data.collaborators.names}`;
-    
+		data.collaborators.final = `## Credits
+
+  ${data.collaborators.names}`;
 	} else {
 		data.collaborators.final = "";
 	}
 
 	//License
 	if (data.license.name != "none") {
-    data.license.final = `## License
+		data.license.final = `## License
 
-    ${data.license.name}`;
-
+  ${data.license.name}`;
 	} else if (data.license.name === "none") {
 		data.license.final = "";
 	}
@@ -66,8 +62,7 @@ function generateMarkdown(data) {
 	if (data.contribute.answer[0] === "Yes") {
 		data.contribute.final = `## How to Contribute
 
-    ${data.contribute.location}`;
-
+  ${data.contribute.location}`;
 	} else {
 		data.contribute.final = "";
 	}
@@ -77,14 +72,12 @@ function generateMarkdown(data) {
 		data.test.final = `## Tests
 
   ${data.test.steps}`;
-    
 	} else {
 		data.test.final = "";
 	}
 
-
-  //Return
-  return `# ${data.title}
+	//Return
+	return `# ${data.title}
 
 ## Description
   - ${data.motivation}
