@@ -37,8 +37,8 @@ function renderLicenseSection(license) {}
 function generateMarkdown(data) {
 	console.log(data);
 
-	console.log(license.name);
-	data.license.final = renderLicenseBadge(license.name);
+	console.log(data.license.name);
+	data.license.badge = renderLicenseBadge(data.license.name);
 
 	//Table of Contents
 	if (data.tableofcontents[0] === "Yes") {
@@ -104,7 +104,7 @@ function generateMarkdown(data) {
 
 	//Return
 	return `# ${data.title}
-${data.license.final}
+${data.license.badge}
 ## Description
   - ${data.motivation}
   - ${data.reason}
