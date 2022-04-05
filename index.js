@@ -3,13 +3,13 @@ const generateMarkdown = require("./utils/generateMarkdown.js");
 const fs = require("fs/promises");
 
 const startQuestions = [
-    {
-        type: "checkbox",
-        name: "create",
-        message: "Do you wish to create a README?",
-        choices: ["Yes", "No"],
-    }
-]
+	{
+		type: "checkbox",
+		name: "create",
+		message: "Do you wish to create a README?",
+		choices: ["Yes", "No"],
+	},
+];
 
 const baseQuestions = [
 	{
@@ -144,7 +144,7 @@ const colabQuestions = [
 		type: "input",
 		name: "colabgit",
 		message: "What is their github? (One at a time)",
-	}
+	},
 ];
 
 const badgeQuestions = [
@@ -162,7 +162,7 @@ const badgeQuestions = [
 		type: "input",
 		name: "features",
 		message: "List your projects features.",
-	}
+	},
 ];
 
 const contibuteQuestions = [
@@ -170,7 +170,7 @@ const contibuteQuestions = [
 		type: "input",
 		name: "contibuteinput",
 		message: "How would you like future contributors to reach out",
-	}
+	},
 ];
 
 const testQuestions = [
@@ -178,45 +178,43 @@ const testQuestions = [
 		type: "input",
 		name: "testinput",
 		message: "Write out a test for your program.",
-	}
+	},
 ];
 
-
 async function writeToFile(fileName, contents) {
-    try {
-        await fs.appendFile(fileName, contents);
-        console.log("Read Me Created!");
-    } catch (error) {
-        console.log("ERROR", error);
-    };
-};
+	try {
+		await fs.appendFile(fileName, contents);
+		console.log("Read Me Created!");
+	} catch (error) {
+		console.log("ERROR", error);
+	}
+}
 
 function start() {
-    inquirer.prompt(startQuestions).then((data) => {
+	inquirer.prompt(startQuestions).then((data) => {
 		if (data.create[0] === "No") {
 			console.log("Why are you here then?");
 			process.exit();
 		} else if (data.create[0] === "Yes") {
-            base();
+			base();
 		}
 	});
-};
+}
 
 async function base() {
-        
-    var text = await inquirer.prompt(baseQuestions).then(answers => {
-        return answers;
-    });
+	var text = await inquirer.prompt(baseQuestions).then((answers) => {
+		return answers;
+	});
 
-    var contents = generateMarkdown(text);
+	var contents = generateMarkdown(text);
 
-    writeToFile(text.filename, contents);
+	writeToFile(text.filename, contents);
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    start();
-};
+	start();
+}
 
 // Function call to initialize app
 init();
